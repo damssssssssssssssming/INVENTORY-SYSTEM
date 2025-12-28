@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="dash.css">
+</head>
+<body>
+
+<div class="dashboard">
+    <h2>User Dashboard</h2>
+
+    <div class="cards">
+        <div class="card">
+            Total Products
+            <span>120</span>
+        </div>
+        <div class="card">
+            Available Stock
+            <span>85</span>
+        </div>
+        <div class="card">
+            Low Stock
+            <span>12</span>
+        </div>
+        <div class="card">
+            Pending Orders
+            <span>7</span>
+        </div>
+    </div>
+
+   <div class="actions">
+    <button class="icon-btn" title="Create New Order" onclick="createOrder()">
+        <i class="fa-solid fa-plus"></i>
+        <span>New Order</span>
+    </button>
+
+    <button class="icon-btn" title="Pending Orders" onclick="viewPending()">
+        <i class="fa-solid fa-clock"></i>
+        <span>Pending</span>
+    </button>
+
+    <button class="icon-btn" title="Completed Orders" onclick="viewCompleted()">
+        <i class="fa-solid fa-check"></i>
+        <span>Completed</span>
+    </button>
+
+    <button class="icon-btn" title="View Inventory" onclick="viewInventory()">
+        <i class="fa-solid fa-boxes-stacked"></i>
+        <span>Inventory</span>
+    </button>
+</div>
+
+<button class="logout" onclick="logout()">
+    <i class="fa-solid fa-right-from-bracket"></i> Logout
+</button>
+
+</div>
+
+<script src="dash.js"></script>
+</body>
+</html>
