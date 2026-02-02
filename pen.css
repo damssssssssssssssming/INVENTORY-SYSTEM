@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #020617, #020617);
+    color: #e5e7eb;
+}
+
+.page-container {
+    padding: 40px;
+}
+
+h1 {
+    color: #38bdf8;
+    margin-bottom: 25px;
+}
+
+.table-card {
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+    padding: 14px;
+    text-align: center;
+}
+
+.orders-table th {
+    color: #38bdf8;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.orders-table td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.status {
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 13px;
+}
+
+.status.pending {
+    background: rgba(250, 204, 21, 0.2);
+    color: #facc15;
+}
+
+.action-btn {
+    margin: 0 4px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.view {
+    background: #38bdf8;
+    color: #020617;
+}
+
+.edit {
+    background: #22c55e;
+    color: #020617;
+}
+
+.cancel {
+    background: #ef4444;
+    color: white;
+}
+
+.complete {
+    background: #6366f1;
+    color: white;
+}
+
+.action-btn:hover {
+    opacity: 0.85;
+}

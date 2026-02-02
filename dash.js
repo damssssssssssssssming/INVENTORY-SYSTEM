@@ -4,22 +4,22 @@ function logout() {
 
 function createOrder() {
     alert("Redirecting to Create Order page");
-    // Later: window.location.href = "create-order.html";
+  window.location.href = "create-order.html";
 }
 
 function viewPending() {
     alert("Redirecting to Pending Orders page");
-    // Later: window.location.href = "pending-orders.html";
+    window.location.href = "pending-orders.html";
 }
 
 function viewCompleted() {
     alert("Redirecting to Completed Orders page");
-    // Later: window.location.href = "completed-orders.html";
+   window.location.href = "completed-orders.html";
 }
 
 function viewInventory() {
     alert("Redirecting to Inventory page");
-    // Later: window.location.href = "inventory.html";
+window.location.href = "inventory.html";
 }
 
 window.onload = function () {

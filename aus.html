@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Logs</title>
+  <link rel="stylesheet" href="aus.css">
+</head>
+<body>
+  <div class="page-container">
+    <div class="page-header">
+      <h1>User Logs</h1>
+      <button class="back-btn" id="backBtn">← Back to Dashboard</button>
+    </div>
+
+    <div class="search-export">
+      <input type="text" id="searchInput" placeholder="Search logs..." />
+      <button class="btn export" id="exportBtn">Export Logs</button>
+    </div>
+
+    <div class="table-card">
+      <table class="logs-table">
+        <thead>
+          <tr>
+            <th>Date & Time</th>
+            <th>User</th>
+            <th>Action</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody id="logsTableBody">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="aus.js"></script>
+</body>
+</html>

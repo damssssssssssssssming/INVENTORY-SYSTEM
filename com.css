@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #020617, #020617);
+    color: #e5e7eb;
+}
+
+.page-container {
+    padding: 40px;
+}
+
+h1 {
+    color: #22c55e;
+    margin-bottom: 25px;
+}
+
+.table-card {
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.2);
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+    padding: 14px;
+    text-align: center;
+}
+
+.orders-table th {
+    color: #22c55e;
+    border-bottom: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.orders-table td {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.status.completed {
+    padding: 6px 14px;
+    border-radius: 12px;
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    font-size: 13px;
+}
+
+.view-btn {
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: none;
+    background: #38bdf8;
+    color: #020617;
+    cursor: pointer;
+}
+
+.view-btn:hover {
+    opacity: 0.85;
+}

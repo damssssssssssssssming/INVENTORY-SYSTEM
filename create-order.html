@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Order</title>
+    <link rel="stylesheet" href="co.css">
+</head>
+<body>
+
+<div class="page-container">
+    <h1>Create New Order</h1>
+
+    <div class="order-card">
+        <table class="order-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="productList"></tbody>
+        </table>
+
+        <div class="grand-total">
+            <span>Total Amount:</span>
+            <span id="grandTotal">₱0.00</span>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn submit" id="submitOrder">Submit Order</button>
+<button class="btn cancel" id="cancelOrder">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script src="co.js"></script>
+</body>
+</html>

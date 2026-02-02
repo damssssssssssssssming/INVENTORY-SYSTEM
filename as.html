@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Assign Shift</title>
+  <link rel="stylesheet" href="as.css" />
+</head>
+<body>
+
+  <div class="page-container">
+    <div class="page-header">
+      <h1>Assign Shift</h1>
+      <button class="back-btn">← Back</button>
+    </div>
+
+    <div class="card">
+      <form id="assignShiftForm">
+
+        <div class="form-group">
+          <label>User</label>
+          <select id="user">
+            <option value="">Select User</option>
+            <option>John Doe</option>
+            <option>Jane Smith</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Role</label>
+          <select id="role">
+            <option value="">Select Role</option>
+            <option>Staff</option>
+            <option>Cashier</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Shift Date</label>
+          <input type="date" id="date" />
+        </div>
+
+        <div class="form-group">
+          <label>Shift Time</label>
+          <select id="shift">
+            <option>Morning (9 AM - 3 PM)</option>
+            <option>Evening (3 PM - 9 PM)</option>
+            <option>Night (9 PM - 3 AM)</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-btn">Assign Shift</button>
+
+      </form>
+    </div>
+  </div>
+
+  <script src="as.js"></script>
+</body>
+</html>

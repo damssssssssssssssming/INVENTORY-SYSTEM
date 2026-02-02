@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Stock</title>
+  <link rel="stylesheet" href="up.css">
+</head>
+<body>
+  <div class="page-container">
+    <div class="page-header">
+      <h1>Update Stock</h1>
+      <button class="back-btn" id="backBtn">← Back to Dashboard</button>
+    </div>
+
+    <form id="updateStockForm" autocomplete="off">
+      <label for="productSelect">Select Product</label>
+      <select id="productSelect" required>
+      </select>
+
+      <label>Current Stock: <span id="currentStock">0</span></label>
+
+      <label for="quantityChange">Quantity Change</label>
+      <input type="number" id="quantityChange" required />
+
+      <label for="reason">Reason (optional)</label>
+      <input type="text" id="reason" placeholder="Stock adjustment reason" />
+
+      <div class="buttons">
+        <button type="submit" class="btn submit">Update Stock</button>
+        <button type="button" class="btn cancel" id="cancelBtn">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="up.js"></script>
+</body>
+</html>

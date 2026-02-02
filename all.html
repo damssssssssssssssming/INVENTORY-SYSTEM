@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Orders</title>
+  <link rel="stylesheet" href="all.css">
+</head>
+<body>
+  <div class="page-container">
+    <div class="page-header">
+      <h1>All Orders</h1>
+      <button class="back-btn" id="backBtn">← Back to Dashboard</button>
+    </div>
+
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search orders..." />
+    </div>
+
+    <div class="table-card">
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>Order ID</th>
+            <th>Date & Time</th>
+            <th>Status</th>
+            <th>Created By</th>
+            <th>Total (₱)</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="ordersTableBody">
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="all.js"></script>
+</body>
+</html>

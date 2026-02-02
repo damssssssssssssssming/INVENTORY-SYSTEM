@@ -1,0 +1,58 @@
+    body {
+  background: #020617;
+  font-family: "Segoe UI", sans-serif;
+  color: #e5e7eb;
+}
+
+.page-container {
+  padding: 40px;
+  max-width: 420px;
+  margin: auto;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #38bdf8;
+}
+
+.back-btn {
+  border: 1px solid #38bdf8;
+  background: transparent;
+  color: #38bdf8;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.export-card {
+  background: rgba(15,23,42,.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(56,189,248,.2);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.btn {
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.csv {
+  background: #22c55e;
+  color: #020617;
+}
+
+.btn.pdf {
+  background: #38bdf8;
+  color: #020617;
+}

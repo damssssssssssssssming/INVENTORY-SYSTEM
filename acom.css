@@ -1,0 +1,95 @@
+/* Same as all-orders.css but no status column needed */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #020617, #020617);
+  color: #e5e7eb;
+}
+
+.page-container {
+  padding: 40px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #38bdf8;
+}
+
+.back-btn {
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  color: #38bdf8;
+  border: 1px solid #38bdf8;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  font-size: 16px;
+}
+
+#searchInput::placeholder {
+  color: #94a3b8;
+}
+
+.table-card {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 14px;
+  text-align: center;
+}
+
+.orders-table th {
+  color: #38bdf8;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.orders-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.action-btn {
+  background: transparent;
+  border: none;
+  color: #38bdf8;
+  cursor: pointer;
+  font-weight: 700;
+  margin: 0 3px;
+  font-size: 14px;
+}
+
+.action-btn:hover {
+  text-decoration: underline;
+}

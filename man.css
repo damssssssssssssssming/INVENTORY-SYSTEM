@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #020617, #020617);
+  color: #e5e7eb;
+}
+
+.page-container {
+  padding: 40px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: #38bdf8;
+}
+
+.back-btn {
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: none;
+  background: transparent;
+  color: #38bdf8;
+  border: 1px solid #38bdf8;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  font-size: 16px;
+}
+
+#searchInput::placeholder {
+  color: #94a3b8;
+}
+
+.table-card {
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+  margin-bottom: 20px;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.products-table th,
+.products-table td {
+  padding: 14px;
+  text-align: center;
+}
+
+.products-table th {
+  color: #38bdf8;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.products-table td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.status {
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status.available {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.status.low {
+  background: rgba(250, 204, 21, 0.2);
+  color: #facc15;
+}
+
+.status.out {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.button-group {
+  text-align: right;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.3s ease;
+  margin-left: 10px;
+}
+
+.btn.add {
+  background-color: #38bdf8;
+  color: #020617;
+}
+
+.btn.add:hover {
+  background-color: #0ea5e9;
+}
+
+.action-btn {
+  background: transparent;
+  border: none;
+  color: #38bdf8;
+  cursor: pointer;
+  font-weight: 700;
+  margin: 0 5px;
+  font-size: 14px;
+}
+
+.action-btn:hover {
+  text-decoration: underline;
+}

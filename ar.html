@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assign Role</title>
+  <link rel="stylesheet" href="ar.css">
+</head>
+<body>
+  <div class="page-container">
+    <div class="page-header">
+      <h1>Assign Role</h1>
+      <button class="back-btn" id="backBtn">← Back to Dashboard</button>
+    </div>
+
+    <div class="role-card">
+      <p><strong>Name:</strong> <span id="name"></span></p>
+      <p><strong>Email:</strong> <span id="email"></span></p>
+      <p><strong>Current Role:</strong> <span id="currentRole"></span></p>
+
+      <select id="roleSelect">
+        <option value="Admin">Admin</option>
+        <option value="Staff">Staff</option>
+        <option value="User">User</option>
+      </select>
+
+      <div class="button-group">
+        <button class="btn save" id="saveBtn">Save Role</button>
+        <button class="btn cancel" id="cancelBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="ar.js"></script>
+</body>
+</html>
