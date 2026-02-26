@@ -1,24 +1,36 @@
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
-    font-family: "Segoe UI", sans-serif;
-    background: linear-gradient(135deg, #020617, #020617, #020617);
-    color: #e5e7eb;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, #050b14, #071a2e);
+    font-family: 'Segoe UI', sans-serif;
+    color: #ffffff;
 }
 
 .page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
     padding: 40px;
 }
 
 h1 {
-    color: #38bdf8;
+    color: #4db8ff;
     margin-bottom: 25px;
 }
 
-.order-card {
-    background: rgba(15, 23, 42, 0.9);
+.order-form {
+    background: rgba(10, 26, 47, 0.95);
     border-radius: 20px;
     padding: 25px;
-    box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
+    box-shadow: 0 0 25px rgba(31, 162, 255, 0.2);
+    width: 100%;
+    max-width: 900px;
 }
 
 .order-table {
@@ -30,24 +42,25 @@ h1 {
 .order-table td {
     padding: 15px;
     text-align: center;
+    vertical-align: middle;
 }
 
 .order-table th {
-    color: #38bdf8;
-    border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+    color: #4db8ff;
+    border-bottom: 1px solid rgba(31, 162, 255, 0.3);
 }
 
 .order-table td {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.order-table input {
-    width: 70px;
+.order-table input[type="number"] {
+    width: 60px;
     padding: 6px;
-    background: #020617;
-    border: 1px solid #38bdf8;
-    color: #e5e7eb;
-    border-radius: 8px;
+    background: #050b14;
+    border: 1px solid #4db8ff;
+    color: #ffffff;
+    border-radius: 6px;
     text-align: center;
 }
 
@@ -56,12 +69,13 @@ h1 {
     display: flex;
     justify-content: space-between;
     font-size: 20px;
-    color: #38bdf8;
+    color: #4db8ff;
 }
 
-.action-buttons {
+.form-actions {
     margin-top: 25px;
     display: flex;
+    justify-content: center;
     gap: 15px;
 }
 
@@ -71,27 +85,19 @@ h1 {
     border: none;
     font-size: 15px;
     cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    background: #0a1a2f;
+    color: #4db8ff;
+    border: 1px solid rgba(31, 162, 255, 0.3);
 }
 
-.btn.submit {
-    background: #38bdf8;
-    color: #020617;
+.btn:hover {
+    background: linear-gradient(135deg, #1fa2ff, #12d8fa);
+    color: #002b4f;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(31, 162, 255, 0.4);
 }
-
-.btn.submit:hover {
-    background: #0ea5e9;
-}
-
-.btn.cancel {
-    background: transparent;
-    border: 1px solid #ef4444;
-    color: #ef4444;
-}
-
-.btn.cancel:hover {
-    background: rgba(239, 68, 68, 0.15);
-}
-/* existing styles stay the same */
 
 .qty-control {
     display: flex;
@@ -101,22 +107,28 @@ h1 {
 }
 
 .qty-btn {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 8px;
     border: none;
-    background: #38bdf8;
-    color: #020617;
-    font-size: 18px;
+    background: #4db8ff;
+    color: #050b14;
+    font-size: 20px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
 }
 
 .qty-btn:hover {
-    background: #0ea5e9;
+    background: #1fa2ff;
 }
 
 .qty-value {
-    min-width: 30px;
+    min-width: 40px;
     text-align: center;
     font-size: 16px;
+    color: #ffffff;
+    display: inline-block;
 }

@@ -108,3 +108,56 @@ h1 {
 .action-btn:hover {
   text-decoration: underline;
 }
+/* Buttons */
+.btn {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+/* Blue Edit button */
+.btn-blue {
+    background-color: #1E90FF;
+    color: #fff;
+}
+
+.btn-blue:hover {
+    background-color: #0F78D1;
+}
+
+/* Red Delete button */
+.btn-red {
+    background-color: #FF4C4C;
+    color: #fff;
+}
+
+.btn-red:hover {
+    background-color: #D93636;
+}
+
+/* Add button */
+.btn.add {
+    background-color: #28A745;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.btn.add:hover {
+    background-color: #218838;
+}
+
+/* Cancel button (optional if used) */
+.btn.cancel {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btn.cancel:hover {
+    background-color: #5a6268;
+}

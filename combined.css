@@ -1,0 +1,187 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(135deg, #050b14, #071a2e);
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+}
+
+/* Page container */
+.page-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 30px;
+}
+
+/* Page header */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    font-size: 28px;
+    color: #4db8ff;
+}
+
+/* Back button */
+.back-btn {
+    background: linear-gradient(135deg, #1fa2ff, #12d8fa);
+    color: #002b4f;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+}
+.back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(31, 162, 255, 0.4);
+}
+
+/* Buttons */
+.btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-blue, .btn.save, .btn.add {
+    background: linear-gradient(135deg, #1fa2ff, #12d8fa);
+    color: #002b4f;
+}
+
+.btn-blue:hover, .btn.save:hover, .btn.add:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(31, 162, 255, 0.4);
+}
+
+.btn-red {
+    background: linear-gradient(135deg, #ff4b4b, #ff0000);
+    color: white;
+}
+.btn-red:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 75, 75, 0.4);
+}
+
+.btn.cancel {
+    background: #0a1a2f;
+    color: #4db8ff;
+    border: 1px solid rgba(31, 162, 255, 0.3);
+}
+.btn.cancel:hover {
+    background: rgba(10, 26, 47, 0.8);
+}
+
+/* Button group */
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+/* Form card */
+.form-card {
+    background: #0a1a2f;
+    padding: 25px;
+    border-radius: 14px;
+    margin-top: 20px;
+    box-shadow: 0 10px 25px rgba(31, 162, 255, 0.15);
+}
+
+.form-card input, .form-card select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #071a2e;
+    color: white;
+    font-size: 14px;
+}
+
+.form-card input::placeholder,
+.form-card select::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Table card */
+.table-card {
+    background: #0a1a2f;
+    padding: 20px;
+    border-radius: 14px;
+    margin-top: 20px;
+    box-shadow: 0 10px 25px rgba(31, 162, 255, 0.15);
+}
+
+/* Tables */
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table th, .users-table td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.users-table th {
+    background: rgba(31, 162, 255, 0.1);
+    color: #4db8ff;
+    font-weight: 600;
+}
+
+.users-table tr:hover {
+    background: rgba(31, 162, 255, 0.08);
+}
+
+/* Messages */
+.message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-left: 4px solid #1fa2ff;
+    background: rgba(31, 162, 255, 0.1);
+    color: #4db8ff;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status {
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: rgba(31, 162, 255, 0.2);
+    color: #4db8ff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .form-card input, .form-card select {
+        font-size: 13px;
+    }
+}

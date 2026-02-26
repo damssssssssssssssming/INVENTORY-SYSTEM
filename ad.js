@@ -1,5 +1,6 @@
 function navigateTo(page) {
-    window.location.href = page + ".html";
+    // Navigate directly to the PHP page (no .html appended)
+    window.location.href = page;
 }
 
 function exportLogs() {
@@ -12,10 +13,11 @@ function refreshDashboard() {
 
 function logoutAdmin() {
     if (confirm("Logout admin?")) {
-        window.location.href = "login.html";
+        window.location.href = "login.php"; // Make sure login is PHP too
     }
 }
 
+// Chart.js initialization remains the same
 new Chart(document.getElementById('stockChart'), {
     type: 'line',
     data: {
@@ -26,17 +28,6 @@ new Chart(document.getElementById('stockChart'), {
             backgroundColor: 'rgba(18,216,250,0.2)',
             tension: 0.4,
             fill: true
-        }]
-    }
-});
-
-new Chart(document.getElementById('orderShiftChart'), {
-    type: 'bar',
-    data: {
-        labels: ['Morning','Afternoon','Night'],
-        datasets: [{
-            data: [45,70,30],
-            backgroundColor: ['#1fa2ff','#12d8fa','#4db8ff']
         }]
     }
 });
