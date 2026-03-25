@@ -2,13 +2,11 @@
 session_start();
 include "config.php";
 
-// Check login
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
-// Check admin
 $stmt = $conn->prepare("SELECT role FROM users WHERE username=?");
 $stmt->bind_param("s", $_SESSION['username']);
 $stmt->execute();
@@ -20,7 +18,6 @@ if ($user['role'] !== 'admin') {
 }
 $stmt->close();
 
-// Handle Delete Product
 if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
     $conn->query("DELETE FROM products WHERE id=$id");
@@ -28,7 +25,6 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
-// Fetch all products
 $products = $conn->query("SELECT * FROM products ORDER BY name ASC");
 ?>
 
@@ -52,7 +48,6 @@ $products = $conn->query("SELECT * FROM products ORDER BY name ASC");
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Price (₱)</th>
                     <th>Quantity</th>
                     <th>Actions</th>
                 </tr>
@@ -61,11 +56,31 @@ $products = $conn->query("SELECT * FROM products ORDER BY name ASC");
                 <?php while ($row = $products->fetch_assoc()): ?>
                 <tr>
                     <td><?= htmlspecialchars($row['name']); ?></td>
-                    <td><?= number_format($row['price'], 2); ?></td>
-                    <td><?= $row['quantity']; ?></td>
+
                     <td>
-                        <!-- Delete only -->
-                        <a href="?delete=<?= $row['id']; ?>" class="btn btn-red" onclick="return confirm('Delete this product?')">Delete</a>
+                        <div class="stepper">
+                            <form action="update_qty.php" method="GET" style="display:inline;">
+                                <input type="hidden" name="id" value="<?= $row['id']; ?>">
+                                <input type="hidden" name="action" value="minus">
+                                <button type="submit">−</button>
+                            </form>
+
+                            <input type="text" value="<?= $row['quantity']; ?>" readonly>
+
+                            <form action="update_qty.php" method="GET" style="display:inline;">
+                                <input type="hidden" name="id" value="<?= $row['id']; ?>">
+                                <input type="hidden" name="action" value="plus">
+                                <button type="submit">+</button>
+                            </form>
+                        </div>
+                    </td>
+
+                    <td>
+                        <a href="?delete=<?= $row['id']; ?>" 
+                           class="btn btn-red" 
+                           onclick="return confirm('Delete this product?')">
+                           Delete
+                        </a>
                     </td>
                 </tr>
                 <?php endwhile; ?>

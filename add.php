@@ -3,7 +3,7 @@ session_start();
 include "config.php";
 
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -44,7 +44,7 @@ if (isset($_POST['add'])) {
   <div class="page-container">
     <div class="page-header">
       <h1>Add Product</h1>
-      <button class="back-btn" onclick="window.location='mano.php'">← Back to Dashboard</button>
+      <button class="back-btn" onclick="window.location='ad.php'">← Back to Dashboard</button>
     </div>
 
     <form method="POST" autocomplete="off">
@@ -54,8 +54,6 @@ if (isset($_POST['add'])) {
       <label for="initialStock">Initial Stock</label>
       <input type="number" name="quantity" id="initialStock" min="0" required />
 
-      <label for="price">Price (₱)</label>
-      <input type="number" name="price" id="price" min="0" step="0.01" required />
 
       <div class="buttons">
         <button type="submit" name="add" class="btn submit">Save Product</button>

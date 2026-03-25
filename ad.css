@@ -104,3 +104,27 @@ body {
     text-align: center;
     color: #9fd3ff;
 }
+.date-filter{
+margin-bottom:20px;
+display:flex;
+justify-content:flex-end;
+}
+
+.date-filter input{
+background:#0a1a2f;
+border:1px solid rgba(31,162,255,0.3);
+color:#4db8ff;
+padding:8px 12px;
+border-radius:8px;
+margin-right:10px;
+}
+
+.date-filter button{
+background:linear-gradient(135deg,#1fa2ff,#12d8fa);
+border:none;
+padding:8px 14px;
+border-radius:8px;
+color:#002b4f;
+cursor:pointer;
+font-weight:bold;
+}

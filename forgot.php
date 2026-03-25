@@ -14,7 +14,7 @@
     <button type="submit">Reset Password</button>
   </form>
 
-  <a href="login.php">Back to Login</a>
+  <a href="index.php">Back to Login</a>
 </div>
 
 </body>

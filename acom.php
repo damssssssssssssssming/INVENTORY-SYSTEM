@@ -3,7 +3,7 @@ session_start();
 include "config.php";
 
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -47,7 +47,6 @@ $orders = $conn->query("SELECT * FROM orders
                     <th>Status</th>
                     <th>Shift</th>
                     <th>User ID</th>
-                    <th>Total (₱)</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -59,10 +58,13 @@ $orders = $conn->query("SELECT * FROM orders
                     <td><?= htmlspecialchars($row['status']); ?></td>
                     <td><?= htmlspecialchars($row['shift']); ?></td>
                     <td><?= $row['user_id']; ?></td>
-                    <td>₱<?= number_format($row['total_amount'], 2); ?></td>
                     <td>
                         <a href="view_order.php?id=<?= $row['id']; ?>" class="btn btn-blue">View</a>
-                        <a href="?delete=<?= $row['id']; ?>" class="btn btn-red" onclick="return confirm('Delete this order?')">Delete</a>
+                        <a href="?delete=<?= $row['id']; ?>" 
+                           class="btn btn-red" 
+                           onclick="return confirm('Delete this order?')">
+                           Delete
+                        </a>
                     </td>
                 </tr>
                 <?php endwhile; ?>

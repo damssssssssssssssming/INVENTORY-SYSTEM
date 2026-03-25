@@ -27,7 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Ensure role is set
             $role = !empty($user['role']) ? $user['role'] : 'user';
 
-            // Redirect based on role
             if ($role === 'admin') {
                 header("Location: ad.php");
                 exit();
@@ -37,13 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
         } else {
-            // Incorrect password
-            echo "<script>alert('Incorrect password'); window.location='login.php';</script>";
+            echo "<script>alert('Incorrect password'); window.location='index.php';</script>";
         }
 
     } else {
-        // User not found
-        echo "<script>alert('User not found'); window.location='login.php';</script>";
+        echo "<script>alert('User not found'); window.location='index.php';</script>";
     }
 
     $stmt->close();

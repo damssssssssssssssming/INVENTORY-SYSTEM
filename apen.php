@@ -3,7 +3,7 @@ session_start();
 include "config.php";
 
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -60,7 +60,11 @@ $orders = $conn->query("SELECT * FROM orders
                     <td><?= $row['user_id']; ?></td>
                     <td>
                         <a href="view_order.php?id=<?= $row['id']; ?>" class="btn btn-blue">View</a>
-                        <a href="?delete=<?= $row['id']; ?>" class="btn btn-red" onclick="return confirm('Delete this order?')">Delete</a>
+                        <a href="?delete=<?= $row['id']; ?>" 
+                           class="btn btn-red" 
+                           onclick="return confirm('Delete this order?')">
+                           Delete
+                        </a>
                     </td>
                 </tr>
                 <?php endwhile; ?>

@@ -2,13 +2,11 @@
 session_start();
 include "config.php";
 
-// Check login
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
-// Check admin
 $stmt = $conn->prepare("SELECT role FROM users WHERE username=?");
 $stmt->bind_param("s", $_SESSION['username']);
 $stmt->execute();
@@ -20,13 +18,11 @@ if ($user['role'] !== 'admin') {
 }
 $stmt->close();
 
-// Handle stock update
 if (isset($_POST['update'])) {
     $product_id = intval($_POST['product_id']);
     $quantity_change = intval($_POST['quantity_change']);
     $reason = $_POST['reason'];
 
-    // Get current quantity
     $stmt = $conn->prepare("SELECT quantity FROM products WHERE id=?");
     $stmt->bind_param("i", $product_id);
     $stmt->execute();
@@ -41,7 +37,7 @@ if (isset($_POST['update'])) {
         $stmt->execute();
         $stmt->close();
 
-        // Optionally, log the reason somewhere if you have a stock history table
+        // Optional: log reason in stock history table
 
         header("Location: mano.php");
         exit();

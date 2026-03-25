@@ -3,7 +3,7 @@ session_start();
 include "config.php";
 
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $hasOrder = true;
 
-                $stmt = $conn->prepare("SELECT name, price, quantity FROM products WHERE id=? FOR UPDATE");
+                $stmt = $conn->prepare("SELECT name, quantity FROM products WHERE id=? FOR UPDATE");
                 $stmt->bind_param("i", $product_id);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -46,19 +46,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     throw new Exception("Not enough stock for " . $product['name']);
                 }
 
-                $lineTotal = $product['price'] * $quantity;
-
                 $newStock = $product['quantity'] - $quantity;
                 $updateStock = $conn->prepare("UPDATE products SET quantity=? WHERE id=?");
                 $updateStock->bind_param("ii", $newStock, $product_id);
                 $updateStock->execute();
                 $updateStock->close();
 
+                // Removed total_amount
                 $insertOrder = $conn->prepare("
-                    INSERT INTO orders (product_id, quantity, status, user_id, total_amount) 
-                    VALUES (?, ?, 'Pending', ?, ?)
+                    INSERT INTO orders (product_id, quantity, status, user_id) 
+                    VALUES (?, ?, 'Pending', ?)
                 ");
-                $insertOrder->bind_param("iiid", $product_id, $quantity, $user_id, $lineTotal);
+                $insertOrder->bind_param("iii", $product_id, $quantity, $user_id);
                 $insertOrder->execute();
                 $insertOrder->close();
             }
@@ -99,7 +98,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <thead>
                     <tr>
                         <th>Product</th>
-                        <th>Price</th>
                         <th>Available</th>
                         <th>Quantity</th>
                     </tr>
@@ -111,7 +109,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     ?>
                     <tr>
                         <td><?php echo htmlspecialchars($row['name']); ?></td>
-                        <td>₱<?php echo number_format($row['price'], 2); ?></td>
                         <td><?php echo $row['quantity']; ?></td>
                         <td>
                             <div class="qty-control">
@@ -129,7 +126,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div class="form-actions">
             <button type="submit" class="btn btn-submit">Submit Order</button>
-            <button type="button" class="btn btn-cancel" onclick="window.location='dashboard.php'">Back to Dashboard</button>
+            <button type="button" class="btn btn-cancel" onclick="window.location='dashboard.php'">
+                Back to Dashboard
+            </button>
         </div>
 
     </form>
@@ -142,7 +141,7 @@ document.querySelectorAll(".order-table tbody tr").forEach(row => {
     let qty = 0;
 
     row.querySelector(".plus").addEventListener("click", () => {
-        const max = parseInt(row.cells[2].textContent);
+        const max = parseInt(row.cells[1].textContent);
         if (qty < max) qty++;
         qtySpan.textContent = qty;
         hiddenInput.value = qty;

@@ -11,7 +11,7 @@ if ($result->num_rows > 0) {
     $update = "UPDATE users SET password='$new_password' WHERE username='$username'";
 
     if ($conn->query($update) === TRUE) {
-        echo "Password reset successfully! New password: 123456 <br><a href='login.php'>Login Here</a>";
+        echo "Password reset successfully! New password: 123456 <br><a href='index.php'>Login Here</a>";
     } else {
         echo "Error resetting password!";
     }

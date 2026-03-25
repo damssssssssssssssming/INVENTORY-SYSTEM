@@ -2,9 +2,8 @@
 session_start();
 include "config.php";
 
-// Redirect if not logged in or not admin
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -13,60 +12,75 @@ $stmt->bind_param("s", $_SESSION['username']);
 $stmt->execute();
 $res = $stmt->get_result();
 $user = $res->fetch_assoc();
+
 if ($user['role'] !== 'admin') {
     header("Location: dashboard.php");
     exit();
 }
-$stmt->close();
 
-// Fetch total products
-$resProducts = $conn->query("SELECT COUNT(*) as total FROM products");
-$totalProducts = $resProducts->fetch_assoc()['total'];
+$selectedDate = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
 
-// Fetch total users
-$resUsers = $conn->query("SELECT COUNT(*) as total FROM users");
-$totalUsers = $resUsers->fetch_assoc()['total'];
+// Orders By Hour (for selected date)
+$hourLabels = [];
+$hourData = [];
+$q3 = $conn->query("SELECT HOUR(created_at) as h, COUNT(*) as total FROM orders WHERE DATE(created_at)='$selectedDate' GROUP BY h ORDER BY h");
+while ($row = $q3->fetch_assoc()) {
+    $hourLabels[] = $row['h'] . ":00";
+    $hourData[] = (int)$row['total'];
+}
 
-// Fetch total orders
-$resOrders = $conn->query("SELECT COUNT(*) as total FROM orders");
-$totalOrders = $resOrders->fetch_assoc()['total'];
-
-// Fetch completed orders
-$resCompleted = $conn->query("SELECT COUNT(*) as total FROM orders WHERE status='Completed'");
-$totalCompleted = $resCompleted->fetch_assoc()['total'];
+// Inventory Value (total quantity * price) per day for last 7 days
+$invLabels = [];
+$invData = [];
+$q4 = $conn->query("
+    SELECT DATE(created_at) as d, SUM(quantity * price) as total_value
+    FROM products
+    WHERE created_at >= DATE_SUB(CURDATE(), INTERVAL 6 DAY)
+    GROUP BY d
+    ORDER BY d ASC
+");
+while ($row = $q4->fetch_assoc()) {
+    $invLabels[] = $row['d'];
+    $invData[] = (float)$row['total_value'];
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="ad.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta charset="UTF-8" />
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="ad.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
 
+<body>
 <div class="dashboard">
     <h2>Admin Dashboard</h2>
+
+    <div class="date-filter">
+        <form method="GET" action="">
+            <input type="date" name="date" value="<?php echo htmlspecialchars($selectedDate); ?>" />
+            <button type="submit">Filter</button>
+        </form>
+    </div>
 
     <div class="section">
         <h3><i class="fa-solid fa-chart-simple"></i> Dashboard Analytics</h3>
         <div class="charts">
             <div class="chart-card">
-                <h4>Stock Movement Trend</h4>
-                <canvas id="stockChart"></canvas>
+                <h4>Orders By Hour (<?php echo date('M d, Y', strtotime($selectedDate)); ?>)</h4>
+                <canvas id="ordersByHourChart"></canvas>
             </div>
             <div class="chart-card">
-                <h4>User Activity</h4>
-                <canvas id="userActivityChart"></canvas>
-            </div>
-            <div class="chart-card">
-                <h4>Monthly Inventory Usage</h4>
-                <canvas id="inventoryChart"></canvas>
+                <h4>Inventory Value (Last 7 Days)</h4>
+                <canvas id="inventoryValueChart"></canvas>
             </div>
         </div>
     </div>
 
+    <!-- Rest of your sections unchanged -->
     <div class="section">
         <h3><i class="fa-solid fa-boxes-stacked"></i> Inventory Management</h3>
         <div class="actions">
@@ -91,8 +105,7 @@ $totalCompleted = $resCompleted->fetch_assoc()['total'];
         <h3><i class="fa-solid fa-users-gear"></i> User Management</h3>
         <div class="actions">
             <button class="icon-btn" onclick="navigateTo('aman.php')"><i class="fa-solid fa-users"></i><span>Manage Users</span></button>
-            <button class="icon-btn" onclick="navigateTo('adu.php')"><i class="fa-solid fa-user-plus"></i><span>Add User</span></button>
-
+        </div>
     </div>
 
     <div class="section">
@@ -112,6 +125,14 @@ $totalCompleted = $resCompleted->fetch_assoc()['total'];
     </div>
 </div>
 
+<script>
+let hourLabels = <?php echo json_encode($hourLabels); ?>;
+let hourData = <?php echo json_encode($hourData); ?>;
+let invLabels = <?php echo json_encode($invLabels); ?>;
+let invData = <?php echo json_encode($invData); ?>;
+</script>
+
 <script src="ad.js"></script>
+
 </body>
 </html>

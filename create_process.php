@@ -17,7 +17,7 @@ if ($result->num_rows > 0) {
             VALUES ('$fullname', '$username', '$password', '$shift', 'user')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Account created successfully! <br><a href='login.php'>Login Here</a>";
+        echo "Account created successfully! <br><a href='index.php'>Login Here</a>";
     } else {
         echo "Error creating account.";
     }

@@ -2,30 +2,39 @@
 session_start();
 include "config.php";
 
-// Redirect if not logged in
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
 }
 
-// Fetch all products
-$products = $conn->query("SELECT * FROM products ORDER BY name ASC");
-
-// Handle CSV Export
 if (isset($_GET['export']) && $_GET['export'] === 'csv') {
+
+    $products = $conn->query("SELECT * FROM products ORDER BY name ASC");
+
     header('Content-Type: text/csv');
     header('Content-Disposition: attachment; filename="inventory_report.csv"');
 
     $output = fopen('php://output', 'w');
-    fputcsv($output, ['Product Name', 'Price (₱)', 'Quantity', 'Stock Status']);
+
+    fputcsv($output, ['Product Name', 'Quantity', 'Stock Status']);
 
     while ($row = $products->fetch_assoc()) {
-        $status = $row['quantity'] > 5 ? 'Available' : ($row['quantity'] > 0 ? 'Low' : 'Out of Stock');
-        fputcsv($output, [$row['name'], number_format($row['price'],2), $row['quantity'], $status]);
+        $status = $row['quantity'] > 5 ? 'Available' : 
+                 ($row['quantity'] > 0 ? 'Low' : 'Out of Stock');
+
+        fputcsv($output, [
+            $row['name'], 
+            $row['quantity'], 
+            $status
+        ]);
     }
+
     fclose($output);
     exit();
 }
+
+// Fetch products for table display
+$products = $conn->query("SELECT * FROM products ORDER BY name ASC");
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +45,7 @@ if (isset($_GET['export']) && $_GET['export'] === 'csv') {
 <link rel="stylesheet" href="inr.css">
 </head>
 <body>
+
 <div class="page-container">
     <div class="page-header">
         <h1>Inventory Report</h1>
@@ -51,21 +61,22 @@ if (isset($_GET['export']) && $_GET['export'] === 'csv') {
             <thead>
                 <tr>
                     <th>Product Name</th>
-                    <th>Price (₱)</th>
                     <th>Quantity</th>
                     <th>Stock Status</th>
                 </tr>
             </thead>
             <tbody>
                 <?php while($row = $products->fetch_assoc()): 
-                    $status = $row['quantity'] > 5 ? 'Available' : ($row['quantity'] > 0 ? 'Low' : 'Out of Stock');
-                    $statusClass = strtolower($status);
+                    $status = $row['quantity'] > 5 ? 'Available' : 
+                             ($row['quantity'] > 0 ? 'Low' : 'Out of Stock');
+                    $statusClass = strtolower(str_replace(' ', '', $status));
                 ?>
                 <tr>
                     <td><?= htmlspecialchars($row['name']); ?></td>
-                    <td><?= number_format($row['price'], 2); ?></td>
                     <td><?= $row['quantity']; ?></td>
-                    <td class="status <?= $statusClass; ?>"><?= $status; ?></td>
+                    <td class="status <?= $statusClass; ?>">
+                        <?= $status; ?>
+                    </td>
                 </tr>
                 <?php endwhile; ?>
             </tbody>

@@ -23,7 +23,7 @@ function login() {
 
 function createAccount() {
     alert("Account created successfully!");
-    window.location.href = "login.html";
+    window.location.href = "index.php";
 }
 
 function resetPassword() {

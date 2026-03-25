@@ -24,7 +24,9 @@ $result = $conn->query($query);
 <div class="page-container">
 
     <div class="action-buttons">
-        <button class="btn-back" onclick="window.location='dashboard.php'">← Back to Dashboard</button>
+        <button class="btn-back" onclick="window.location='dashboard.php'">
+            ← Back to Dashboard
+        </button>
     </div>
 
     <h1>Completed Orders</h1>
@@ -37,7 +39,6 @@ $result = $conn->query($query);
                     <th>Date & Time</th>
                     <th>Status</th>
                     <th>Created By</th>
-                    <th>Total Amount</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,15 +48,16 @@ $result = $conn->query($query);
                             <td>ORD-<?= $row['id']; ?></td>
                             <td><?= date("Y-m-d h:i A", strtotime($row['created_at'])); ?></td>
                             <td>
-                                <span class="status completed"><?= $row['status']; ?></span>
+                                <span class="status completed">
+                                    <?= $row['status']; ?>
+                                </span>
                             </td>
                             <td><?= $row['username']; ?></td>
-                            <td>₱<?= number_format($row['total_amount'], 2); ?></td>
                         </tr>
                     <?php endwhile; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="5" style="text-align:center;">
+                        <td colspan="4" style="text-align:center;">
                             No completed orders found.
                         </td>
                     </tr>

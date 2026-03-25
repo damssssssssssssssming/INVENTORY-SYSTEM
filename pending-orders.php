@@ -35,7 +35,6 @@ $result = $conn->query($query);
                     <th>Date & Time</th>
                     <th>Status</th>
                     <th>Created By</th>
-                    <th>Total</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -46,7 +45,6 @@ $result = $conn->query($query);
                     <td><?= date("Y-m-d h:i A", strtotime($row['created_at'])); ?></td>
                     <td class="status pending"><?= $row['status']; ?></td>
                     <td><?= htmlspecialchars($row['username']); ?></td>
-                    <td>₱<?= number_format($row['total_amount'], 2); ?></td>
                     <td>
                         <a href="complete.php?id=<?= $row['id']; ?>" class="btn btn-action">Complete</a>
                         <a href="cancel.php?id=<?= $row['id']; ?>" class="btn btn-action">Cancel</a>

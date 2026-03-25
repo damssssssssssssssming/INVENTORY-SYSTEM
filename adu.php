@@ -3,7 +3,7 @@ session_start();
 include "config.php";
 
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit();
 }
 
@@ -14,16 +14,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $role = $conn->real_escape_string($_POST['role']);
     $shift = $conn->real_escape_string($_POST['shift']);
 
-    // Basic validation
     if (empty($fullname) || empty($username) || empty($password) || empty($role) || empty($shift)) {
         $error = "Please fill in all fields.";
     } else {
-        // Check if username already exists
         $check = $conn->query("SELECT id FROM users WHERE username='$username'");
         if ($check->num_rows > 0) {
             $error = "Username already exists.";
         } else {
-            // Insert user
             $sql = "INSERT INTO users (fullname, username, password, role, shift) VALUES ('$fullname', '$username', '$password', '$role', '$shift')";
             if ($conn->query($sql)) {
                 header("Location: aman.php");
